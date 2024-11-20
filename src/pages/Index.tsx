@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import PromptInput from "@/components/PromptInput";
 import OptimizeButton from "@/components/OptimizeButton";
+import CopyButton from "@/components/CopyButton";
 import { optimizePrompt } from "@/lib/api";
 
 const Index = () => {
@@ -47,8 +48,9 @@ const Index = () => {
       <div className="w-full max-w-2xl space-y-8">
         <PromptInput value={prompt} onChange={setPrompt} />
         
-        <div className="flex justify-center">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <OptimizeButton onClick={handleOptimize} isLoading={isLoading} />
+          {prompt && <CopyButton text={prompt} />}
         </div>
       </div>
     </div>
