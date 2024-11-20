@@ -1,9 +1,10 @@
 import { toast } from "sonner";
 import Anthropic from '@anthropic-ai/sdk';
 
-// 初始化 Anthropic 客户端
+// Initialize Anthropic client with browser safety flag
 const anthropic = new Anthropic({
   apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
+  dangerouslyAllowBrowser: true // Enable browser usage
 });
 
 export const optimizePrompt = async (prompt: string): Promise<string> => {
@@ -32,7 +33,11 @@ export const optimizePrompt = async (prompt: string): Promise<string> => {
       }],
     });
 
-    const optimizedPrompt = message.content[0].text;
+    // Safely access the content value
+    const optimizedPrompt = message.content[0].type === 'text' 
+      ? message.content[0].text 
+      : prompt;
+      
     console.log("Optimized prompt:", optimizedPrompt);
     
     return optimizedPrompt;
