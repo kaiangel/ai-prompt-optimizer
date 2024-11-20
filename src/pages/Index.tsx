@@ -1,11 +1,55 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
+import PromptInput from "@/components/PromptInput";
+import OptimizeButton from "@/components/OptimizeButton";
+import { optimizePrompt } from "@/lib/api";
 
 const Index = () => {
+  const [prompt, setPrompt] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleOptimize = async () => {
+    if (!prompt.trim()) {
+      toast({
+        title: "请输入内容",
+        description: "请先输入你想优化的提示词",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const optimized = await optimizePrompt(prompt);
+      setPrompt(optimized);
+      toast({
+        title: "优化成功",
+        description: "你的提示词已经被优化",
+      });
+    } catch (error) {
+      console.error("Failed to optimize prompt:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="container mx-auto px-4 py-12 min-h-screen flex flex-col items-center justify-center">
+      <div className="text-center mb-12 animate-fade-in">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-teal to-blue-400 bg-clip-text text-transparent">
+          首语
+        </h1>
+        <p className="text-gray-600 text-lg md:text-xl">
+          开启AI对话的第一步
+        </p>
+      </div>
+
+      <div className="w-full max-w-2xl space-y-8">
+        <PromptInput value={prompt} onChange={setPrompt} />
+        
+        <div className="flex justify-center">
+          <OptimizeButton onClick={handleOptimize} isLoading={isLoading} />
+        </div>
       </div>
     </div>
   );
