@@ -14,14 +14,6 @@ const Index = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const handlePromptChange = (value: string) => {
-    setPrompt(value);
-    // 当用户开始输入新的prompt时，清除上一次优化的结果
-    if (optimized) {
-      setOptimized("");
-    }
-  };
-
   const handleOptimize = async () => {
     if (!prompt.trim()) {
       toast({
@@ -76,7 +68,7 @@ const Index = () => {
       {/* Main content */}
       <main className="container mx-auto px-4 py-8 md:py-12 lg:py-16 flex flex-col items-center justify-center relative z-10">
         <div className="w-full max-w-3xl space-y-8">
-          <PromptInput value={prompt} onChange={handlePromptChange} />
+          <PromptInput value={prompt} onChange={setPrompt} />
           
           <div className="flex flex-col items-center gap-6">
             <OptimizeButton onClick={handleOptimize} isLoading={isLoading} />
