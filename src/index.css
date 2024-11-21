@@ -52,10 +52,10 @@
   }
 
   [role="toast"] [role="status"] {
-    @apply text-magic-primary font-medium;
+    @apply text-magic-primary font-medium !important;
   }
 
   [role="toast"] [role="alert"] {
-    @apply text-text-secondary;
+    @apply text-text-secondary !important;
   }
 }
