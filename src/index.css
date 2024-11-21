@@ -30,17 +30,17 @@
 
   body {
     font-family: 'Noto Sans SC', sans-serif;
-    @apply bg-gradient-to-b from-mint to-lavender min-h-screen;
+    @apply bg-gradient-to-b from-background-start to-background-end min-h-screen;
   }
 
   .prompt-input {
     @apply w-full p-6 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg 
            border border-white/20 focus:outline-none focus:ring-2 
-           focus:ring-teal/30 transition-all duration-300 resize-none;
+           focus:ring-magic-primary/30 transition-all duration-300 resize-none;
   }
 
   .optimize-button {
-    @apply px-8 py-3 bg-gradient-to-r from-teal to-blue-400 
+    @apply px-8 py-3 bg-gradient-to-r from-magic-primary to-magic-secondary 
            text-white rounded-full font-medium shadow-lg 
            hover:shadow-xl transition-all duration-300 
            hover:scale-105 active:scale-95;
