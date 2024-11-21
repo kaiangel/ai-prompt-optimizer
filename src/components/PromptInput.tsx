@@ -9,7 +9,6 @@ interface PromptInputProps {
 const PromptInput: React.FC<PromptInputProps> = ({ value, onChange }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Auto-resize textarea
   useEffect(() => {
     const textarea = textareaRef.current;
     if (textarea) {
@@ -30,7 +29,7 @@ const PromptInput: React.FC<PromptInputProps> = ({ value, onChange }) => {
           ref={textareaRef}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="写下你的想法，让我们一起将其转化为完美的开场白..."
+          placeholder="随意写下你的任何想法，让我们一起将其转化为完美的开场白...（例：我想）"
           className="min-h-[200px] md:min-h-[250px] w-full bg-transparent border-none 
                    focus:outline-none focus:ring-0 text-text-primary text-lg leading-relaxed 
                    placeholder:text-gray-400 placeholder:font-light resize-none relative z-10"
