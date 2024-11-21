@@ -16,6 +16,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
       toast({
         title: "复制成功 ✨",
         description: "提示词已复制到剪贴板",
+        duration: 2000,
       });
       
       setTimeout(() => setCopied(false), 1500);
@@ -25,6 +26,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ text }) => {
         title: "复制失败",
         description: "请重试",
         variant: "destructive",
+        duration: 2000,
       });
     }
   };

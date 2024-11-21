@@ -30,6 +30,7 @@ const Index = () => {
       toast({
         title: "请输入内容",
         description: "请先输入你想优化的提示词",
+        duration: 2000,
       });
       return;
     }
@@ -42,6 +43,7 @@ const Index = () => {
       toast({
         title: "优化成功",
         description: "你的提示词已经被优化",
+        duration: 2000,
       });
     } catch (error) {
       console.error("Failed to optimize prompt:", error);
@@ -49,6 +51,7 @@ const Index = () => {
         title: "优化失败",
         description: "请稍后重试",
         variant: "destructive",
+        duration: 2000,
       });
     } finally {
       setIsLoading(false);

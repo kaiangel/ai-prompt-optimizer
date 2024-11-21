@@ -10,7 +10,10 @@ import { User } from "lucide-react";
 
 const UserMenu = () => {
   const navigate = useNavigate();
-  const isLoggedIn = false; // 模拟未登录状态
+  // Check localStorage for login state
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+  console.log("Login state:", isLoggedIn); // Debug log
 
   return (
     <DropdownMenu>
@@ -26,6 +29,14 @@ const UserMenu = () => {
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => navigate("/history")}>
               历史记录
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={() => {
+                localStorage.removeItem("isLoggedIn");
+                window.location.reload(); // Refresh to update state
+              }}
+            >
+              退出登录
             </DropdownMenuItem>
           </>
         ) : (

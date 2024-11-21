@@ -45,4 +45,18 @@
            hover:shadow-xl transition-all duration-300 
            hover:scale-105 active:scale-95;
   }
+
+  /* Toast styling */
+  [role="toast"] {
+    @apply bg-white/95 backdrop-blur-sm border border-magic-primary/10 
+           shadow-lg rounded-xl text-text-primary;
+  }
+
+  [role="toast"] [role="status"] {
+    @apply text-magic-primary font-medium;
+  }
+
+  [role="toast"] [role="alert"] {
+    @apply text-text-secondary;
+  }
 }

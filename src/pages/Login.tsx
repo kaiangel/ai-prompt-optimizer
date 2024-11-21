@@ -13,11 +13,15 @@ const Login = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // 模拟登录
+    // Set login state in localStorage
+    localStorage.setItem("isLoggedIn", "true");
+    
     toast({
       title: "登录成功",
       description: "欢迎回来！",
+      duration: 2000, // 2 seconds
     });
+    
     navigate("/");
   };
 
