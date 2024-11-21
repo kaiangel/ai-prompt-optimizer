@@ -19,56 +19,37 @@ export default {
     },
     extend: {
       colors: {
-        mint: "#F2FCE2",
-        lavender: "#E5DEFF",
-        teal: "#33C3F0",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        "magic-primary": "#43B692", // 翡翠绿
+        "magic-secondary": "#3F88C5", // 极光蓝
+        "text-primary": "#2c3e50", // 主文本
+        "text-secondary": "#34495e", // 次要文本
+        "background-start": "#ffffff", // 背景起始色
+        "background-end": "#e8f5e9", // 背景结束色
       },
       keyframes: {
-        "fade-in": {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        "aurora-flow": {
+          "0%, 100%": { opacity: "0.5" },
+          "50%": { opacity: "0.8" },
         },
-        "scale-in": {
-          "0%": { opacity: "0", transform: "scale(0.8)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
+        shimmer: {
+          "0%": { backgroundPosition: "100% 0" },
+          "100%": { backgroundPosition: "-100% 0" },
+        },
+        "fade-in-up": {
+          from: {
+            opacity: "0",
+            transform: "translateY(20px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
         },
       },
       animation: {
-        "fade-in": "fade-in 0.5s ease-out",
-        "scale-in": "scale-in 0.2s ease-out",
+        "aurora-flow": "aurora-flow 15s ease-in-out infinite",
+        shimmer: "shimmer 6s linear infinite",
+        "fade-in-up": "fade-in-up 0.6s ease-out forwards",
       },
     },
   },
