@@ -48,8 +48,7 @@
 
   /* Toast styling */
   [role="toast"] {
-    @apply bg-white/95 backdrop-blur-sm border border-magic-primary/10 
-           shadow-lg rounded-xl text-text-primary;
+    @apply bg-white shadow-lg rounded-xl text-text-primary !important;
   }
 
   [role="toast"] [role="status"] {

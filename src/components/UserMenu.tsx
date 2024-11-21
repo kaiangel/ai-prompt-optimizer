@@ -10,10 +10,9 @@ import { User } from "lucide-react";
 
 const UserMenu = () => {
   const navigate = useNavigate();
-  // Check localStorage for login state
   const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
-  console.log("Login state:", isLoggedIn); // Debug log
+  console.log("Login state:", isLoggedIn);
 
   return (
     <DropdownMenu>
@@ -21,7 +20,10 @@ const UserMenu = () => {
         <User className="w-5 h-5" />
         <span>{isLoggedIn ? "我的账户" : "未登录"}</span>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent 
+        align="end" 
+        className="w-48 bg-white border border-gray-100 shadow-lg"
+      >
         {isLoggedIn ? (
           <>
             <DropdownMenuItem onClick={() => navigate("/profile")}>
@@ -33,7 +35,7 @@ const UserMenu = () => {
             <DropdownMenuItem 
               onClick={() => {
                 localStorage.removeItem("isLoggedIn");
-                window.location.reload(); // Refresh to update state
+                window.location.reload();
               }}
             >
               退出登录
