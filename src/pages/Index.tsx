@@ -7,17 +7,6 @@ import CopyButton from "@/components/CopyButton";
 import UserMenu from "@/components/UserMenu";
 import { optimizePrompt } from "@/lib/api";
 
-const mockOptimizedPrompt = `在这个充满无限可能的人工智能时代，我们需要学会如何更好地与AI对话。一个好的开场白不仅能够让AI更好地理解我们的需求，还能帮助我们获得更精准、更有价值的回答。让我们一起探索如何构建完美的对话开端，创造出更多令人惊叹的可能性。
-
-在与AI对话时，我们应该：
-1. 明确表达我们的目标和期望
-2. 提供必要的背景信息和上下文
-3. 使用清晰、准确的语言
-4. 适当设定输出的格式和要求
-5. 保持开放和探索的心态
-
-通过这样的方式，我们能够更好地引导AI，获得更有价值的回应，开启一段富有成效的对话之旅。让我们携手探索AI带来的无限可能，创造出更多精彩的对话瞬间。`;
-
 const Index = () => {
   const [prompt, setPrompt] = useState("");
   const [optimized, setOptimized] = useState("");
@@ -37,9 +26,8 @@ const Index = () => {
 
     setIsLoading(true);
     try {
-      // 模拟API调用
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setOptimized(mockOptimizedPrompt);
+      const result = await optimizePrompt(prompt);
+      setOptimized(result);
       toast({
         title: "优化成功",
         description: "你的提示词已经被优化",
