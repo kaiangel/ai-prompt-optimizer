@@ -1,150 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI提示词优化器</title>
-    <meta name="description" content="AI提示词优化助手" />
+    <title>ai-prompt-optimizer</title>
+    <meta name="description" content="Lovable Generated Project" />
     <meta name="author" content="Lovable" />
     <meta property="og:image" content="/og-image.svg" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
   </head>
-  <body class="min-h-screen bg-gradient-to-b from-background-start to-background-end">
-    <div class="min-h-screen relative overflow-x-hidden">
-      <!-- Aurora background effect -->
-      <div class="aurora-background animate-aurora-flow"></div>
-      
-      <!-- Header -->
-      <header class="site-header bg-white/80 backdrop-blur-sm border-b border-magic-primary/10">
-        <div class="absolute right-4 top-4">
-          <button id="userMenuBtn" class="flex items-center space-x-2 px-4 py-2 rounded-full bg-white/90 hover:bg-white/95 shadow-sm transition-all">
-            <span>我的账户</span>
-          </button>
-        </div>
-        <h1 class="site-title">序话</h1>
-        <p class="text-text-secondary text-lg md:text-xl font-light tracking-wide">
-          开启AI对话的第一步
-        </p>
-      </header>
 
-      <!-- Main content -->
-      <main class="container mx-auto px-4 py-8 md:py-12 lg:py-16">
-        <div class="w-full max-w-3xl mx-auto space-y-8">
-          <!-- Prompt Input -->
-          <div class="prompt-input-container animate-fade-in-up">
-            <div class="animate-shimmer"></div>
-            <textarea
-              id="promptInput"
-              class="prompt-input"
-              placeholder="随意写下任何想做的事，让我们一起将其转化为完美的开场白...（例：我想写个相声剧本）"
-            ></textarea>
-          </div>
-
-          <!-- Optimize Button -->
-          <div class="flex flex-col items-center gap-6">
-            <button id="optimizeBtn" class="optimize-button group">
-              <span class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 3v3m6.366 2.634a9 9 0 0 1 0 12.728M7.634 7.634a9 9 0 0 0 0 12.728"></path>
-                </svg>
-                <span>点亮灵感</span>
-              </span>
-            </button>
-
-            <!-- Results Area -->
-            <div id="resultsArea" class="w-full hidden animate-fade-in-up">
-              <div class="results-container">
-                <h3 class="text-xl font-medium text-magic-primary mb-4">优化后的提示词</h3>
-                <p id="optimizedText" class="text-text-primary text-lg leading-relaxed whitespace-pre-wrap mb-6"></p>
-                <div class="flex justify-end">
-                  <button id="copyBtn" class="px-6 py-3 bg-white/90 hover:bg-white/95 backdrop-blur-sm rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:translate-y-[-2px] active:scale-95 animate-fade-in-up flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-magic-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    <span class="text-text-primary text-lg">复制提示词</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-
-    <!-- Toast Container -->
-    <div id="toastContainer" class="fixed bottom-4 right-4 z-50"></div>
-
-    <script>
-      // Toast function
-      function showToast(title, message, type = 'success') {
-        const toast = document.createElement('div');
-        toast.className = `bg-white shadow-lg rounded-xl text-text-primary p-4 mb-4 animate-fade-in-up`;
-        toast.innerHTML = `
-          <h4 class="font-medium ${type === 'success' ? 'text-magic-primary' : 'text-red-500'}">${title}</h4>
-          <p class="text-text-secondary">${message}</p>
-        `;
-        
-        document.getElementById('toastContainer').appendChild(toast);
-        setTimeout(() => {
-          toast.classList.add('animate-fade-out');
-          setTimeout(() => toast.remove(), 300);
-        }, 2000);
-      }
-
-      // Copy button functionality
-      document.getElementById('copyBtn')?.addEventListener('click', async () => {
-        const text = document.getElementById('optimizedText').textContent;
-        try {
-          await navigator.clipboard.writeText(text);
-          showToast('复制成功 ✨', '提示词已复制到剪贴板');
-        } catch (err) {
-          showToast('复制失败', '请重试', 'error');
-        }
-      });
-
-      // Optimize button functionality
-      document.getElementById('optimizeBtn')?.addEventListener('click', async () => {
-        const promptInput = document.getElementById('promptInput');
-        const resultsArea = document.getElementById('resultsArea');
-        const optimizedText = document.getElementById('optimizedText');
-        
-        if (!promptInput.value.trim()) {
-          showToast('请输入内容', '请先输入你想优化的提示词');
-          return;
-        }
-
-        // Simulate optimization (replace with actual API call in production)
-        const optimizeBtn = document.getElementById('optimizeBtn');
-        optimizeBtn.disabled = true;
-        optimizeBtn.innerHTML = `<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>`;
-
-        setTimeout(() => {
-          const optimizedPrompt = `优化后的提示词示例：\n${promptInput.value}\n\n1. 更清晰的表达\n2. 更具体的描述\n3. 更好的结构`;
-          optimizedText.textContent = optimizedPrompt;
-          resultsArea.classList.remove('hidden');
-          
-          optimizeBtn.disabled = false;
-          optimizeBtn.innerHTML = `
-            <span class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 3v3m6.366 2.634a9 9 0 0 1 0 12.728M7.634 7.634a9 9 0 0 0 0 12.728"></path>
-              </svg>
-              <span>点亮灵感</span>
-            </span>
-          `;
-          
-          showToast('优化成功', '你的提示词已经被优化');
-        }, 1500);
-      });
-
-      // Auto-resize textarea
-      const textarea = document.getElementById('promptInput');
-      textarea.addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = this.scrollHeight + 'px';
-      });
-    </script>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
