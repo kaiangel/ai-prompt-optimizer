@@ -1,39 +1,39 @@
 .header {
-  padding: 88rpx 40rpx 40rpx;
+  padding: 88rpx 40rpx 32rpx;
   text-align: center;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(8rpx);
   position: relative;
-  border-bottom: 2rpx solid rgba(155, 135, 245, 0.1);
+  border-bottom: 2rpx solid rgba(67, 182, 146, 0.1);
 }
 
 .title-container {
   display: inline-block;
   position: relative;
-  margin-bottom: 24rpx;
+  margin-bottom: 16rpx;
 }
 
 .title {
-  font-size: 48rpx;
-  color: #9b87f5;
-  letter-spacing: 8rpx;
-  font-weight: 300;
+  font-size: 40rpx;
+  color: var(--magic-primary);
+  letter-spacing: 4rpx;
+  font-weight: 500;
 }
 
 .title-underline {
   position: absolute;
-  bottom: -12rpx;
+  bottom: -8rpx;
   left: 50%;
   transform: translateX(-50%);
-  width: 40rpx;
-  height: 2rpx;
-  background: linear-gradient(to right, #9b87f5, #7e69ab);
+  width: 32rpx;
+  height: 4rpx;
+  background: linear-gradient(to right, var(--magic-primary), var(--magic-secondary));
   opacity: 0.6;
 }
 
 .subtitle {
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #666;
-  font-weight: 300;
-  margin-top: 24rpx;
+  font-weight: 400;
+  margin-top: 16rpx;
 }
