@@ -1,0 +1,22 @@
+.input-container {
+  padding: 32rpx;
+  margin-top: 40rpx;
+}
+
+.prompt-input {
+  width: 100%;
+  min-height: 240rpx;
+  padding: 32rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.05);
+  font-size: 28rpx;
+  color: #333;
+  transition: all 0.3s;
+  border: 2rpx solid rgba(155, 135, 245, 0.1);
+}
+
+.prompt-input-placeholder {
+  color: #999;
+  font-size: 28rpx;
+}

@@ -1,13 +1,7 @@
-<!-- 页面容器 -->
 <view class="container">
-  <!-- 头部区域 -->
+  <view class="aurora-bg"></view>
+  
   <view class="header">
-    <view class="user-menu">
-      <!-- 用户菜单按钮 -->
-      <button class="avatar-button">
-        <image class="avatar" src="/assets/placeholder.svg" />
-      </button>
-    </view>
     <view class="title-container">
       <text class="title">序话</text>
       <view class="title-underline"></view>
@@ -15,35 +9,26 @@
     <text class="subtitle">开启AI对话的第一步</text>
   </view>
 
-  <!-- 主要内容区域 -->
   <view class="main-content">
     <view class="input-container">
-      <!-- 提示词输入框 -->
       <textarea 
         class="prompt-input"
         value="{{prompt}}"
         placeholder="随意写下你的任何想法，让我们一起将其转化为完美的开场白...（例：我想）"
+        placeholder-class="prompt-input-placeholder"
         bindinput="handlePromptChange"
         auto-height
       />
     </view>
 
-    <!-- 优化按钮 -->
     <view class="button-container">
       <button 
-        class="optimize-button {{isLoading ? 'loading' : ''}}"
+        class="optimize-button"
         bindtap="handleOptimize"
-        disabled="{{isLoading}}"
-      >
-        <view class="button-content">
-          <image class="sparkle-icon" src="/assets/sparkle.svg" />
-          <text>点亮灵感</text>
-        </view>
-        <view class="loading-spinner" wx:if="{{isLoading}}"></view>
-      </button>
+        loading="{{isLoading}}"
+      >点亮灵感</button>
     </view>
 
-    <!-- 优化结果展示区域 -->
     <view class="result-container" wx:if="{{optimized}}">
       <view class="result-card">
         <text class="result-title">优化后的提示词</text>
