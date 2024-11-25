@@ -1,0 +1,97 @@
+:root {
+  --magic-primary: #43B692;
+  --magic-secondary: #3F88C5;
+  --text-primary: #2c3e50;
+  --text-secondary: #34495e;
+  --background-start: #ffffff;
+  --background-end: #e8f5e9;
+}
+
+/* Animations */
+@keyframes aurora-flow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Custom Classes */
+.animate-aurora-flow {
+  animation: aurora-flow 15s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 6s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-out {
+  animation: fade-out 0.3s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out forwards;
+}
+
+.optimize-button {
+  padding: 0.75rem 2rem;
+  background-image: linear-gradient(to right, var(--magic-primary), var(--magic-secondary));
+  color: white;
+  border-radius: 9999px;
+  font-weight: 500;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 300ms;
+}
+
+.optimize-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.optimize-button:active {
+  transform: scale(0.95);
+}
+
+.optimize-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
